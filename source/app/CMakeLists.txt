@@ -1,0 +1,1 @@
+add_executable(tiny_ad_bin tiny_ad_bin.cpp)
