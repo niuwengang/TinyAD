@@ -4,7 +4,7 @@
 
 ## 1. 介绍
 
-TinyAD一个简易版的智能驾驶算法工程，业余随便写写，旨在学习探索mapping、bev、e2e、rl等技术
+TinyAD一个简易版的智能驾驶算法工程，业余随便写写，旨在学习探索online mapping、bev、e2e等技术
 
 ## 2. 依赖
 
@@ -17,6 +17,7 @@ TinyAD一个简易版的智能驾驶算法工程，业余随便写写，旨在�
   
 ## 4. 参考
 https://github.com/qintonguav/ParkingE2E
+https://github.com/opendrivelab/uniad
 
 ## 5. 许可证
 
