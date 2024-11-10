@@ -2,12 +2,12 @@
 <h1>TinyAD: Tiny Autonomous Driving</h1>
 </div>
 
-## 1. 介绍
-
+## 1. 介绍 <br>
 TinyAD一个简易版的智能驾驶算法工程，业余随便写写，旨在学习探索online mapping、bev、e2e等技术
 
 ## 2. 依赖
-
+Ubuntu 20.04
+CUDA ROS Noetic
 
 
 ## 3. 规范
