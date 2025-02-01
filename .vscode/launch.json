@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0", // 配置文件的版本号，这个值通常由 VSCode 自动生成并管理。
+    "configurations": [ // 一个包含一个或多个配置对象的数组。
+        {
+            "name": "Python: 当前文件", // 配置的名称，会显示在 VSCode 的调试启动配置列表中。想叫啥叫啥
+            "type": "python", // 指定调试器类型，Python。
+            "request": "launch", // 调试会话的类型。"launch" 表示启动一个新程序的调试会话。
+            "program": "${file}", // 启动文件的路径。${file}是VSCode的预定义变量，代表当前光标所在的文件。也可以直接指定xx.py
+            "console": "integratedTerminal", // 指定输出在哪个终端中显示，这里是 VSCode 集成终端。
+            "justMyCode": true, // 当设置为 true 时，仅调试自己的代码。false时包括非用户代码（如库代码，导入的模块）
+        }
+    ]
+}
