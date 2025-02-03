@@ -98,6 +98,26 @@ def func9():
     cv2.imshow("image",image)
     cv2.waitKey()
 
+#梯度
+def func10():
+    image=cv2.imread("data/picture/opencv_logo.jpg")
+    laplacian=cv2.Laplacian(image,cv2.CV_64F)
+    canny=cv2.Canny(image,100,200)
+    cv2.imshow("image",image)
+    cv2.imshow("laplacian",laplacian)
+    cv2.imshow("canny",canny)
+    cv2.waitKey()
+
+#阈值
+def func11():
+    gray=cv2.imread("data/picture/bookpage.jpg",cv2.THRESH_BINARY)
+    cv2.imshow("gray",gray)
+    ret,binary=cv2.threshold(gray,10,255,cv2.THRESH_BINARY)
+    cv2.imshow("gray",gray)
+    cv2.imshow("binary",binary)
+    cv2.waitKey()
+
+
 
 if __name__ == "__main__":
     # func1()
@@ -105,4 +125,9 @@ if __name__ == "__main__":
     # func3()
     # func4()
     # func5()
-    func9()
+    # func6()
+    # func7()
+    # func8()
+    # func9()
+    # func10()
+    # func11()    
