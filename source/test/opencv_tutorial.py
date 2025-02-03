@@ -1,7 +1,5 @@
 import cv2
 import numpy as np
-# 打印OpenCV版本
-print(cv2.getVersionString())
 
 
 #颜色通道
@@ -120,6 +118,8 @@ def func11():
 
 
 if __name__ == "__main__":
+    # 打印OpenCV版本    
+    print(cv2.getVersionString())
     # func1()
     # func2()
     # func3()
