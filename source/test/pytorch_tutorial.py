@@ -8,33 +8,15 @@ from torchvision import transforms
 import plotly.express as px
 
 def visualize_tensor_plotly(tensor, title="Tensor Visualization", color_scale='viridis'):
-    """
-    使用 Plotly 可视化 PyTorch 张量图像。
-
-    参数:
-        tensor (torch.Tensor): 输入的 PyTorch 张量，形状为 (C, H, W)。
-        title (str): 图像标题，默认为 "Tensor Visualization"。
-        color_scale (str): Plotly 的颜色映射，默认为 'viridis'。
-
-    返回:
-        None: 直接显示图像。
-    """
     # 检查输入是否为张量
     if not isinstance(tensor, torch.Tensor):
         raise ValueError("Input must be a PyTorch Tensor.")
-    
     # 确保张量的形状为 (C, H, W)
     if tensor.ndim != 3:
         raise ValueError("Input tensor must have shape (C, H, W).")
-    
-    # 转换张量形状为 (H, W, C)
-    tensor_permuted = tensor.permute(1, 2, 0)
-    
-    # 转换为 NumPy 数组
-    image_np = tensor_permuted.numpy()
-    
-    # 使用 Plotly 进行可视化
-    fig = px.imshow(image_np, color_continuous_scale=color_scale)
+    tensor_permuted = tensor.permute(1, 2, 0)    # 转换张量形状为 (H, W, C)
+    image_np = tensor_permuted.numpy()  # 转换为 NumPy 数组
+    fig = px.imshow(image_np, color_continuous_scale=color_scale)    # 使用 Plotly 进行可视化
     fig.update_layout(title=title)
     fig.show()
 
@@ -81,23 +63,36 @@ def Usage2():
 
 #transform工具
 def Usage3():
+    #to tensor
     image=Image.open("data/hymenoptera_data/ants_image/0013035.jpg")
     tensor_trans=transforms.ToTensor()
-    tensor_image=tensor_trans(image)
+    tensor_image=tensor_trans(image)  #通过call
     visualize_tensor_plotly(tensor_image,"origin")
 
-    #标准化   
+    # #标准化   
     trans_norm=transforms.Normalize([0.5,0.5,0.5],[0.5,0.5,0.5])#标准差和方差
     norm_image=trans_norm(tensor_image)
     visualize_tensor_plotly(norm_image,"norm")
 
-    #缩放
+    # #缩放
     resize_trans=transforms.Resize((500,500))
     resize_image=resize_trans(image)
     resize_image= tensor_trans(resize_image)
-    visualize_tensor_plotly(resize_image,"resize")
-    
+    visualize_tensor_plotly(resize_image,"resize1")
+
+    #compose
     resize_trans_2=transforms.Resize(512)
+    #PIL-->PIL-->tensor
+    trans_compose= transforms.Compose([resize_trans_2,tensor_trans])
+    resize_image=trans_compose(image)
+    visualize_tensor_plotly(resize_image,"resize2")
+    
+    #随机裁减
+    random_trans=transforms.RandomCrop(512,512)
+    trans_compose_2=transforms.Compose([random_trans,tensor_trans])
+    for i in range(10):
+        img_crop=trans_compose_2(image)
+        visualize_tensor_plotly(img_crop,i)   
 
 if __name__ == "__main__":
     Usage3()
