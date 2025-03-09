@@ -6,16 +6,12 @@
 TinyAD一个简易版的智能驾驶算法工程，业余随便写写，旨在学习探索online mapping、bev、e2e等技术
 
 ## 2. 依赖
-Ubuntu 20.04、CUDA 、ROS Noetic、TensorRT
+pip install -r requirements.txt
 
 ## 3. 运行
-```shell
-chmod +x ./scripts/*.sh
-./scripts/run_tiny_ad.sh
-```
+
 
 ## 4. 规范
-
 - 代码注释遵循 Doxygen 规则。
 - Git 提交遵循 Angular 提交规则。
   
