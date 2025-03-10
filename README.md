@@ -3,7 +3,7 @@
 </div>
 
 ## 1. 介绍 <br>
-TinyAD一个简易版的智能驾驶算法工程，业余随便写写，旨在学习探索online mapping、bev、e2e等技术
+TinyAD一个简易版的智能驾驶算法工程，致力于学习3dgs、e2e、online mapping等
 
 ## 2. 依赖
 pip install -r requirements.txt
