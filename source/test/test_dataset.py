@@ -4,6 +4,7 @@ import os
 from PIL import Image
 from torchvision import transforms 
 import torchvision
+from torch.utils.tensorboard import SummaryWriter
 
 class HymenopteraDataset(Dataset):
     def __init__(self,input_folder_path,label):
@@ -23,15 +24,21 @@ class HymenopteraDataset(Dataset):
         return image_tensor,self.label
 
 
-
-
-
 if __name__=="__main__":
-    train_set=torchvision.datasets.CIFAR10(root="./dataset",train=True,download=True)
-    test_set=torchvision.datasets.CIFAR10(root="./dataset",train=False,download=True)
-    image,label=train_set[0]
-    image.show()
-    print(train_set.classes[label])
+    dataset_transform=torchvision.transforms.Compose([
+        transforms.Resize((32,32)),
+        transforms.ToTensor()
+    ])
+    train_set=torchvision.datasets.CIFAR10(root="./dataset",train=True,transform=dataset_transform,download=True)
+    test_set=torchvision.datasets.CIFAR10(root="./dataset",train=False,transform=dataset_transform,download=True)
+    print(train_set[0])
+
+    writer=SummaryWriter("p10")
+    for i in range(10):
+        img,target=train_set[i]
+        writer.add_image("train",img,i)
+    writer.close()
+    #tensorboard --logdir=p10
     
 #     workapce_folder_path="/home/g/workspace/TinyAD"
 #     input_folder_path=os.path.join(workapce_folder_path,"dataset","hymenoptera_data","train")
